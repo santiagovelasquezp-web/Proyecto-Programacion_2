@@ -11,8 +11,23 @@ public class Evento {
     private String ciudad;
     private LocalDate fecha;
     private LocalTime hora;
-    private String estado;
-    private String politicas;
+    private EstadoEvento estado;
+    private Politica politicas;
+    private Recinto recinto;
+
+    public Evento(String IDEvento, String nombre, String catgoria, String descripcion, String ciudad, LocalDate fecha,
+                  LocalTime hora, EstadoEvento estado, Politica politicas){//crear las clases de EstdaoEvento.. ya sea enum o con state
+        this.IDEvento=IDEvento;
+        this.nombre=nombre;
+        this.categoria=catgoria;
+        this.descripcion=descripcion;
+        this.ciudad=ciudad;
+        this.fecha=fecha;
+        this.hora=hora;
+        this.estado=estado;
+        this.politicas=politicas;
+
+    }
 }
 //(concierto, teatro, conferencia). Incluye, nombre, categoría, descripción,
 // ciudad, fecha/hora, estado del evento (Borrador, Publicado, Pausado, Cancelado, Finalizado),
