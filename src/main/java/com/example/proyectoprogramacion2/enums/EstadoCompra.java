@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.model;
+package com.example.proyectoprogramacion2.enums;
 
 public enum EstadoCompra {
     CREADA,

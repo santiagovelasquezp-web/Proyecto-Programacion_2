@@ -1,19 +1,22 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.enums.EstadoCompra;
+
+import java.util.List;
+
 public abstract class Usuario {
     private String ID;
     private String nombre;
     private String correo;
-    private String numeroTelefono;
-    private MetodoPago metodoPago;
-    private EstadoCompra estadoCompra;
+    private String telefono;
 
-    public Usuario(String ID, String nombre, String correo, String numeroTelefono, MetodoPago metodoPago){
+    private List<Compra> compras;
+
+    public Usuario(String ID, String nombre, String correo, String telefono){
         this.ID=ID;
         this.nombre=nombre;
         this.correo=correo;
-        this.numeroTelefono=numeroTelefono;
-        this.metodoPago=metodoPago;
+        this.telefono = telefono;
     }
 }
 //   un conjunto de métodos de pago simulados.

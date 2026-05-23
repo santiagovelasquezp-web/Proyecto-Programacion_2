@@ -1,5 +1,7 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.enums.EstadoCompra;
+
 public class Entrada {
     private String idEntrada;
     private Zona zona;

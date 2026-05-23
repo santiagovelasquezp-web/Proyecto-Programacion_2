@@ -1,5 +1,8 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
+import com.example.proyectoprogramacion2.enums.EstadoCompra;
+
 import java.time.LocalDateTime;
 import java.util.List;
 

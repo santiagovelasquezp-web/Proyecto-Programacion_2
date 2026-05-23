@@ -1,5 +1,7 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.enums.EstadoEvento;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
