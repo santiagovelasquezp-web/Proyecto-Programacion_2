@@ -1,9 +1,11 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoEvento;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Evento {
     private String IDEvento;
@@ -14,11 +16,14 @@ public class Evento {
     private LocalDate fecha;
     private LocalTime hora;
     private EstadoEvento estado;
-    private Politica politicas;
     private Recinto recinto;
 
+    private List<Entrada> entradas;
+    private List<String> politicas;
+    private List<ServicioAdicional> serviciosAdicionales;
+
     public Evento(String IDEvento, String nombre, String catgoria, String descripcion, String ciudad, LocalDate fecha,
-                  LocalTime hora, EstadoEvento estado, Politica politicas){//crear las clases de EstdaoEvento.. ya sea enum o con state
+                  LocalTime hora, EstadoEvento estado, String politicas){//crear las clases de EstdaoEvento.. ya sea enum o con state
         this.IDEvento=IDEvento;
         this.nombre=nombre;
         this.categoria=catgoria;
@@ -27,7 +32,7 @@ public class Evento {
         this.fecha=fecha;
         this.hora=hora;
         this.estado=estado;
-        this.politicas=politicas;
+
 
     }
 }

@@ -1,8 +1,11 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoCompra;
 
 public class Entrada {
+    private Evento evento;
+    private ServicioAdicional servicio;
     private String idEntrada;
     private Zona zona;
     private Asiento asiento;
