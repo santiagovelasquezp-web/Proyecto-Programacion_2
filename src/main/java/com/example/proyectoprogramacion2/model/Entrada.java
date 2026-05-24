@@ -20,4 +20,59 @@ public class Entrada {
         this.estadoCompra=estadoCompra;
     }
 
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
+    public ServicioAdicional getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServicioAdicional servicio) {
+        this.servicio = servicio;
+    }
+
+    public String getIdEntrada() {
+        return idEntrada;
+    }
+
+    public void setIdEntrada(String idEntrada) {
+        this.idEntrada = idEntrada;
+    }
+
+    public Zona getZona() {
+        return zona;
+    }
+
+    public void setZona(Zona zona) {
+        this.zona = zona;
+    }
+
+    public Asiento getAsiento() {
+        return asiento;
+    }
+
+    public void setAsiento(Asiento asiento) {
+        this.asiento = asiento;
+    }
+
+    public double getPrecioFinal() {
+        return precioFinal;
+    }
+
+    public void setPrecioFinal(double precioFinal) {
+        this.precioFinal = precioFinal;
+    }
+
+    public EstadoCompra getEstadoCompra() {
+        return estadoCompra;
+    }
+
+    public void setEstadoCompra(EstadoCompra estadoCompra) {
+        this.estadoCompra = estadoCompra;
+    }
 }

@@ -17,6 +17,46 @@ public class Zona {
         this.precioBase = precioBase;
         this.asientos = asientos;
     }
+
+    public String getIdZona() {
+        return idZona;
+    }
+
+    public void setIdZona(String idZona) {
+        this.idZona = idZona;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public double getPrecioBase() {
+        return precioBase;
+    }
+
+    public void setPrecioBase(double precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public List<Asiento> getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(List<Asiento> asientos) {
+        this.asientos = asientos;
+    }
 }
 // (p. ej., VIP, Preferencial, General). Incluye identificador único (idZona),
 // nombre, capacidad, precio base y configuración de asientos (si aplica).

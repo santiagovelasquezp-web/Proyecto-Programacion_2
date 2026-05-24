@@ -1,4 +1,4 @@
 package com.example.proyectoprogramacion2.service;
 
-public class UsuarioService {
+public class PagoService {
 }

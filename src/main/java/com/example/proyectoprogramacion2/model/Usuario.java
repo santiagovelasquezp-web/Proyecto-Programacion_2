@@ -20,5 +20,53 @@ public abstract class Usuario {
         this.correo=correo;
         this.telefono = telefono;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
+
+    public List<MetodoPago> getMetodoPagos() {
+        return metodoPagos;
+    }
+
+    public void setMetodoPagos(List<MetodoPago> metodoPagos) {
+        this.metodoPagos = metodoPagos;
+    }
 }
 //   un conjunto de métodos de pago simulados.
