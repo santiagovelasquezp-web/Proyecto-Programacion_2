@@ -57,6 +57,17 @@ public class Zona {
     public void setAsientos(List<Asiento> asientos) {
         this.asientos = asientos;
     }
+
+    @Override
+    public String toString() {
+        return "Zona{" +
+                "idZona='" + idZona + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", capacidad=" + capacidad +
+                ", precioBase=" + precioBase +
+                ", asientos=" + asientos +
+                '}';
+    }
 }
 // (p. ej., VIP, Preferencial, General). Incluye identificador único (idZona),
 // nombre, capacidad, precio base y configuración de asientos (si aplica).

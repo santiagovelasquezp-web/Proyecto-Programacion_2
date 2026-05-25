@@ -16,7 +16,8 @@ public class Compra {
     private List<Entrada> entradas;
     private List<ServicioAdicional> servicios;
 
-    public Compra(String idCompra, Usuario usuario, Evento evento, LocalDateTime fechaCreacion, EstadoCompra estado, double total, MetodoPago metodoPago, List<Entrada> entradas, List<ServicioAdicional> servicios, MetodoPago pago) {
+    public Compra(String idCompra, Usuario usuario, Evento evento, LocalDateTime fechaCreacion, EstadoCompra estado, double total,
+                  MetodoPago metodoPago, List<Entrada> entradas, List<ServicioAdicional> servicios) {
         this.idCompra = idCompra;
         this.usuario = usuario;
         this.evento = evento;
@@ -100,6 +101,20 @@ public class Compra {
         this.servicios = servicios;
     }
 
-//metodo para calcular el valor de la entrada
+    @Override
+    public String toString() {
+        return "Compra{" +
+                "idCompra='" + idCompra + '\'' +
+                ", usuario=" + usuario +
+                ", evento=" + evento +
+                ", fechaCreacion=" + fechaCreacion +
+                ", estado=" + estado +
+                ", total=" + total +
+                ", metodoPago=" + metodoPago +
+                ", entradas=" + entradas +
+                ", servicios=" + servicios +
+                '}';
+    }
+    //metodo para calcular el valor de la entrada
     // crear metodos para el cambio en compras y demas
 }

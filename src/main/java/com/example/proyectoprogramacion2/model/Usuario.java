@@ -5,7 +5,7 @@ import com.example.proyectoprogramacion2.strategy.MetodoPago;
 
 import java.util.List;
 
-public abstract class Usuario {
+public class Usuario {
     private String ID;
     private String nombre;
     private String correo;
@@ -67,6 +67,18 @@ public abstract class Usuario {
 
     public void setMetodoPagos(List<MetodoPago> metodoPagos) {
         this.metodoPagos = metodoPagos;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "ID='" + ID + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", compras=" + compras +
+                ", metodoPagos=" + metodoPagos +
+                '}';
     }
 }
 //   un conjunto de métodos de pago simulados.

@@ -1,5 +1,7 @@
 package com.example.proyectoprogramacion2.service;
 import com.example.proyectoprogramacion2.model.Evento;
+import com.example.proyectoprogramacion2.model.Recinto;
+
 import java.util.ArrayList;
 import java.util.List;
 

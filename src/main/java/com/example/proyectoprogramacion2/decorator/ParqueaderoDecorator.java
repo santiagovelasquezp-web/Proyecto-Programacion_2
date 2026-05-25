@@ -1,16 +1,16 @@
 package com.example.proyectoprogramacion2.decorator;
 
-public class SeguroDecorator implements ServicioAdicional {
+public class ParqueaderoDecorator implements ServicioAdicional{
     @Override
     public double agregarCosto() {
 
-        return 20000;
+        return 30000;
     }
 
     @Override
     public String descripcion() {
 
-        return "Seguro para evento";
+        return "Servicio de parqueadero agregado";
     }
 
     @Override

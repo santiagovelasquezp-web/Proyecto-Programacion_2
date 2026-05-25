@@ -19,17 +19,20 @@ public class Evento {
     private List<String> politicas;
     private List<ServicioAdicional> serviciosAdicionales;
 
-    public Evento(String IDEvento, String nombre, String catgoria, String descripcion, String ciudad, LocalDate fecha,
-                  LocalTime hora, EstadoEvento estado, String politicas){
-        //crear las clases de EstdaoEvento.. ya sea enum o con state
-        this.IdEvento=IDEvento;
-        this.nombre=nombre;
-        this.categoria=catgoria;
-        this.descripcion=descripcion;
-        this.ciudad=ciudad;
-        this.fecha=fecha;
-        this.hora=hora;
-        this.estado=estado;
+    public Evento(String idEvento, String nombre, String categoria, String descripcion, String ciudad, LocalDate fecha, LocalTime hora,
+                  EstadoEvento estado, Recinto recinto, List<Entrada> entradas, List<String> politicas, List<ServicioAdicional> serviciosAdicionales) {
+        IdEvento = idEvento;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.ciudad = ciudad;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.estado = estado;
+        this.recinto = recinto;
+        this.entradas = entradas;
+        this.politicas = politicas;
+        this.serviciosAdicionales = serviciosAdicionales;
     }
 
     public String getIdEvento() {

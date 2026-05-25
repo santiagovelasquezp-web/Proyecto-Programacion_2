@@ -5,4 +5,9 @@ public class PagoEfectivo implements MetodoPago {
     public void procesarPago(double monto) {
 
     }
+
+    @Override
+    public String toString() {
+        return "PagoEfectivo{}";
+    }
 }

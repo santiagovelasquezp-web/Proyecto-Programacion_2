@@ -12,8 +12,9 @@ public class Entrada {
     private double precioFinal;
     private EstadoCompra estadoCompra;
 
-    public Entrada(String idEntrada, Zona zona, Asiento asiento, double precioFinal, EstadoCompra estadoCompra){
+    public Entrada(String idEntrada,Evento evento, Zona zona, Asiento asiento, double precioFinal, EstadoCompra estadoCompra){
         this.idEntrada=idEntrada;
+        this.evento=evento;
         this.zona=zona;
         this.asiento=asiento;
         this.precioFinal=precioFinal;
@@ -74,5 +75,18 @@ public class Entrada {
 
     public void setEstadoCompra(EstadoCompra estadoCompra) {
         this.estadoCompra = estadoCompra;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrada{" +
+                "evento=" + evento +
+                ", servicio=" + servicio +
+                ", idEntrada='" + idEntrada + '\'' +
+                ", zona=" + zona +
+                ", asiento=" + asiento +
+                ", precioFinal=" + precioFinal +
+                ", estadoCompra=" + estadoCompra +
+                '}';
     }
 }
