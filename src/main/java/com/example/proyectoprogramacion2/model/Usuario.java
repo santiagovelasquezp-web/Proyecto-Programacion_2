@@ -11,13 +11,11 @@ public abstract class Usuario {
     private String correo;
     private String telefono;
 
-    private List<Compra> compras;
-    private List<MetodoPago> metodoPagos;
 
-    public Usuario(String ID, String nombre, String correo, String telefono){
-        this.ID=ID;
-        this.nombre=nombre;
-        this.correo=correo;
+    public Usuario(String ID, String nombre, String correo, String telefono) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.correo = correo;
         this.telefono = telefono;
     }
 
@@ -52,21 +50,7 @@ public abstract class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-    public List<Compra> getCompras() {
-        return compras;
-    }
-
-    public void setCompras(List<Compra> compras) {
-        this.compras = compras;
-    }
-
-    public List<MetodoPago> getMetodoPagos() {
-        return metodoPagos;
-    }
-
-    public void setMetodoPagos(List<MetodoPago> metodoPagos) {
-        this.metodoPagos = metodoPagos;
-    }
 }
+
+
 //   un conjunto de métodos de pago simulados.

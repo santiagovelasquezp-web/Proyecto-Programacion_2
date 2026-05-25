@@ -1,6 +1,7 @@
 module com.example.proyectoprogramacion2 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.example.proyectoprogramacion2;
 
 
     opens com.example.proyectoprogramacion2 to javafx.fxml;
