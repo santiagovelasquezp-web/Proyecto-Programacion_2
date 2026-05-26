@@ -67,6 +67,7 @@ public class Recinto {
                 ", zonas=" + zonas +
                 '}';
     }
+    //metodo para que recinto pueda saber la disponibilidad de sus las clases que están jerarquizadas
     public int getAforoTotalDisponible() {
         int total = 0;
         for (Zona zona : zonas) {

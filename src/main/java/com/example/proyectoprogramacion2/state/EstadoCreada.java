@@ -19,3 +19,4 @@
         }
     }
 
+//implementacion de la clase para modificar el comportamiento segun el estado de la compra

@@ -22,7 +22,7 @@ public class Entrada {
         this.precioFinal=precioFinal;
         this.estadoCompra=estadoCompra;
     }
-
+//clase modelo del objeto de la entrada con los atributos de esta
     public Evento getEvento() {
         return evento;
     }

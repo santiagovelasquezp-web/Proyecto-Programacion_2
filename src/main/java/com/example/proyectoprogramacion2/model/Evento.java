@@ -35,6 +35,7 @@ public class Evento {
         this.politicas = politicas;
         this.serviciosAdicionales = serviciosAdicionales;
     }
+    //clase del evento con atributos, getters y setters
 
     public String getIdEvento() {
         return IdEvento;

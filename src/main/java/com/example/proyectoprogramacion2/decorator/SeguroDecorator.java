@@ -18,4 +18,5 @@ public class SeguroDecorator implements ServicioAdicional {
 
         return descripcion() + " - $" + agregarCosto();
     }
+    //clase que decoraa la entrada con un servicio de seguro
 }

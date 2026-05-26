@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompraService {
-
-    // Método principal para realizar la compra
+//clase encargada de realizar las compras que se generan
+    // metodo que realiza la compra
     public Compra realizarCompra(Usuario usuario, Evento evento, Zona zona, Asiento asiento,
                                  MetodoPago metodoPago, List<ServicioAdicional> servicios) {
 
@@ -27,20 +27,19 @@ public class CompraService {
             return null;
         }
 
-        // 2. Cálculo de Precios (RF-004)
-        // Nota: Asegúrate de que tu clase Zona tenga un método getPrecio()
+        // 2. Cálculo de Precios
         double precioEntrada = zona.getPrecio();
         double totalCompra = precioEntrada;
 
-        // 3. Aplicación de Decorator (Servicios Adicionales)
+        // 3. Aplicación de Decorator (S
         for (ServicioAdicional servicio : servicios) {
-            totalCompra += servicio.agregarCosto(); // Usando tu método del Decorator
+            totalCompra += servicio.agregarCosto();
         }
 
-        // 4. Marcar asiento como ocupado
+        // 4. Marca asiento como ocupado
         asiento.setEstado(EstadoAsiento.OCUPADO);
 
-        // 5. Crear la lista de entradas para esta compra
+        // 5. Crear lista de entradas para esta compra
         List<Entrada> entradas = new ArrayList<>();
         Entrada nuevaEntrada = new Entrada(
                 "ENT-" + System.currentTimeMillis(),
@@ -64,7 +63,6 @@ public class CompraService {
         EstadoCompraState estadoActual = new EstadoCreada();
         estadoActual.procesar(compra);
 
-        // 8. REGISTRO EN EL SINGLETON (Para que el Admin vea las métricas RF-018)
         SistemaConcierto.getInstancia().agregarCompra(compra);
 
         System.out.println("Compra finalizada con éxito por un total de: $" + totalCompra);

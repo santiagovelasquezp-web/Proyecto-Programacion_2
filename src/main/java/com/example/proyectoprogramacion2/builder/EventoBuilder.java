@@ -8,7 +8,7 @@ import com.example.proyectoprogramacion2.model.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
+//clase del patrón builder que permite crear el objeto evento con muchos parametros paso a paso sin necesidad de llenar de constructores
 public class EventoBuilder {
 
     private String idEvento;

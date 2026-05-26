@@ -30,7 +30,7 @@ public class Zona implements ComponenteRecinto{
     public String getDetalles() {
         return "Zona: " + nombre + " (Quedan " + getDisponibilidad() + " asientos)";
     }
-
+// clase zona implementa de la interface para que la jerarquia sepa la disponibilidad de la zona
     public String getIdZona() {
         return idZona;
     }

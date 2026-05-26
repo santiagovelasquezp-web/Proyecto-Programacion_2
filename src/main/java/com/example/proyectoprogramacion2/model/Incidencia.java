@@ -17,6 +17,7 @@ public class Incidencia {
         this.fecha = fecha;
         this.Entidad = Entidad;
     }
+    //clase con los atributos para notificar una incidencia
     public String getidIncidencia(){
         return idIncidencia;
     }

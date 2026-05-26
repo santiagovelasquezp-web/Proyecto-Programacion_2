@@ -22,7 +22,7 @@ public class SistemaConcierto {
 
     private List<Observador> observadores = new ArrayList<>();
 
-
+//clase singleton que contiene las listas de eventos usuarios y compras, genera la instancia unica y la clase que quiera acceder a ella debe entrar a esta instancia
     private SistemaConcierto() {
 
         eventos = new ArrayList<>();
@@ -35,7 +35,6 @@ public class SistemaConcierto {
         usuarios.add(new Usuario("1", "Admin Sistema", "admin@eventos.com", "123", "ADMIN", "1161"));
         usuarios.add(new Usuario("2", "Juan Perez", "juan@correo.com", "456", "CLIENTE", "1488"));
 
-        // EVENTO QUEMADO USANDO TU BUILDER (RF-049)
         Evento e1 = new EventoBuilder()
                 .setIdEvento("E101")
                 .setNombre("Concierto Juanes")

@@ -18,7 +18,7 @@ public class Asiento implements ComponenteRecinto{
     public int getDisponibilidad() {
         return (this.estado == EstadoAsiento.DISPONIBLE) ? 1 : 0;
     }
-
+//implementa la interface para que zona pueda conocer su disponibilidad
     @Override
     public String getDetalles() {
         return "Asiento " + fila + numero;

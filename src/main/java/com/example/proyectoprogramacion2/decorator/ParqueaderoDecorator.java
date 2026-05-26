@@ -18,4 +18,5 @@ public class ParqueaderoDecorator implements ServicioAdicional{
 
         return descripcion() + " - $" + agregarCosto();
     }
+    //clase decoradora que agrega el costo de parqueadero a la clase entrada ya agrega costo
 }

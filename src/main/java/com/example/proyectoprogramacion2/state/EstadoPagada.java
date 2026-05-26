@@ -15,3 +15,4 @@ public class EstadoPagada implements EstadoCompraState {
     }
 
 }
+//clase que implementa y define comportamiento del sistema cuando la compra se paga

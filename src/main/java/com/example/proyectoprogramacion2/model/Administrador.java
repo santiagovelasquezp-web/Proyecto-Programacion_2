@@ -7,5 +7,5 @@ public class Administrador extends Usuario{
         super(ID,nombre,correo,numeroTelefono, rol, contrasena);
 
     }
-
+//clase del rol administrador que hereda de usuario
 }

@@ -18,4 +18,5 @@ public class VIPDecorator implements ServicioAdicional {
 
         return descripcion() + " - $" + agregarCosto();
     }
+    //clase decoradora que agrega la opción de experiencia VIP al objeto entrada
 }

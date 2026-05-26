@@ -25,7 +25,7 @@ public class Usuario implements Observador {
         this.rol=rol;
         this.contrasena = contrasena;
     }
-
+//clase del usuario que usa la aplicación
     public String getID() {
         return ID;
     }

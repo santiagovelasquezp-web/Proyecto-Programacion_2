@@ -9,7 +9,7 @@ public class ReporteCSVAdapter implements ExportadorDatos{
     public String exportar(Object datos) {
         List<Compra> compras = (List<Compra>) datos;
         StringBuilder csv = new StringBuilder();
-
+//la clase implementa la interface, sobreescribe su metodo y añade una funcionalidad propia
         csv.append("ID Compra,Usuario,Evento,Total,Estado\n");
 
         for (Compra c : compras) {
@@ -23,4 +23,4 @@ public class ReporteCSVAdapter implements ExportadorDatos{
         return csv.toString();
     }
 }
-}
+

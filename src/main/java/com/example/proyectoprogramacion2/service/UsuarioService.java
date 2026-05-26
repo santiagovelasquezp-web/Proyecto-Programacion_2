@@ -4,7 +4,7 @@ import com.example.proyectoprogramacion2.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//clase del usuario que administra las funcionalidades del usuario que usan este programa
 public class UsuarioService {
 
         private List<Usuario> usuarios;

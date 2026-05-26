@@ -28,7 +28,7 @@ public class Compra {
         this.entradas = entradas;
         this.servicios = servicios;
     }
-
+//clase compra que contiene todos los metodos necesarios para generar una compra en el sistema
     public String getIdCompra() {
         return idCompra;
     }

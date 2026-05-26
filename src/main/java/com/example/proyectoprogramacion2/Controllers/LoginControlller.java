@@ -49,6 +49,9 @@ public class LoginControlller {
             } else {
                 loader = new FXMLLoader(getClass().getResource("/com/example/proyectoprogramacion2/ClienteView.fxml"));
             }
+            if (usuarioEncontrado.getRol().equals("CLIENTE")) {
+                SistemaConcierto.getInstancia().suscribir(usuarioEncontrado);
+            }
 
             Parent root = loader.load();
             Stage stage = (Stage) btnIngresar.getScene().getWindow();
@@ -58,5 +61,6 @@ public class LoginControlller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventoService {
-
+//clase que genera y administra los eventos creados o los crea
     private List<Evento> listaEventos;
 
     public EventoService() {

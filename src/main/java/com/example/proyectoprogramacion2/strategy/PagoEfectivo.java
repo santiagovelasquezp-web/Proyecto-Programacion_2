@@ -11,3 +11,4 @@ public class PagoEfectivo implements MetodoPago {
         return "PagoEfectivo{}";
     }
 }
+//implementacione spara generar el pago segun la elección del cliente

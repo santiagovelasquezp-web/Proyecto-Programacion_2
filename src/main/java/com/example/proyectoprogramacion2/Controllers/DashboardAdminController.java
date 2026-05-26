@@ -126,6 +126,8 @@ public class DashboardAdminController implements Initializable {
         txtCiudadEvento.clear();
 
         txtCategoriaEvento.clear();
+
+        SistemaConcierto.getInstancia().agregarEvento(nuevoEvento);
     }
     @FXML
     public void cerrarSesion(ActionEvent event) {
@@ -157,7 +159,7 @@ public class DashboardAdminController implements Initializable {
         ExportadorDatos exportador = new ReporteCSVAdapter();
         String contenidoCSV = exportador.exportar(todasLasCompras);
 
-        System.out.println("--- REPORTE GENERADO ---");
+        System.out.println("--- REPORTE GENERADo ---");
         System.out.println(contenidoCSV);
     }
 }

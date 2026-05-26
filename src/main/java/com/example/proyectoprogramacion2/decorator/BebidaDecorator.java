@@ -18,4 +18,5 @@ public class BebidaDecorator implements ServicioAdicional {
 
         return descripcion() + " - $" + agregarCosto();
     }
+    //clase decoradora, con servicio adicional de bebida, implementa el metodo para agregar el objeto a la clase entrada sin modificar la clase y solo agregando costo
 }
