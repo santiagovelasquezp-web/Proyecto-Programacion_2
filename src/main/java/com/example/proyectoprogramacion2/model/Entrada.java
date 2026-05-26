@@ -1,5 +1,7 @@
 package com.example.proyectoprogramacion2.model;
 
+import com.example.proyectoprogramacion2.composite.Asiento;
+import com.example.proyectoprogramacion2.composite.Zona;
 import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoCompra;
 

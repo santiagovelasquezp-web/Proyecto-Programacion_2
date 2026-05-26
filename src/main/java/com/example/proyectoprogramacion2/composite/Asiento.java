@@ -1,8 +1,8 @@
-package com.example.proyectoprogramacion2.model;
+package com.example.proyectoprogramacion2.composite;
 
 import com.example.proyectoprogramacion2.enums.EstadoAsiento;
 
-public class Asiento {
+public class Asiento implements ComponenteRecinto{
     private String idAsiento;
     private String fila;
     private int numero;
@@ -13,6 +13,15 @@ public class Asiento {
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
+    }
+    @Override
+    public int getDisponibilidad() {
+        return (this.estado == EstadoAsiento.DISPONIBLE) ? 1 : 0;
+    }
+
+    @Override
+    public String getDetalles() {
+        return "Asiento " + fila + numero;
     }
 
     public String getIdAsiento() {
@@ -56,6 +65,8 @@ public class Asiento {
                 ", estado=" + estado +
                 '}';
     }
+
+
 }
 
 

@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.model;
+package com.example.proyectoprogramacion2.composite;
 
 import java.util.List;
 
@@ -66,6 +66,13 @@ public class Recinto {
                 ", ciudad='" + ciudad + '\'' +
                 ", zonas=" + zonas +
                 '}';
+    }
+    public int getAforoTotalDisponible() {
+        int total = 0;
+        for (Zona zona : zonas) {
+            total += zona.getDisponibilidad();
+        }
+        return total;
     }
 }
 

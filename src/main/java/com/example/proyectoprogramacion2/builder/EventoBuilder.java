@@ -1,5 +1,6 @@
 package com.example.proyectoprogramacion2.builder;
 
+import com.example.proyectoprogramacion2.composite.Recinto;
 import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoEvento;
 import com.example.proyectoprogramacion2.model.*;

@@ -4,7 +4,7 @@ public enum EstadoCompra {
     CREADA,
     Pagada,
     CONFIRMADA,
-    Cancelada,
+    CANCELADA,
     Reembolsada,
     Incidencia
 

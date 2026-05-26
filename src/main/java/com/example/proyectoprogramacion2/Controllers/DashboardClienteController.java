@@ -1,19 +1,83 @@
 package com.example.proyectoprogramacion2.Controllers;
 
+import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.Evento;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class DashboardClienteController {
 
-    public void abrirCompraView(ActionEvent event) {
+    @FXML
+    private FlowPane contenedorEventos;
+
+    private SistemaConcierto sistema =
+            SistemaConcierto.getInstancia();
+
+    @FXML
+    public void initialize() {
+
+        for (Evento evento : sistema.getEventos()) {
+
+            VBox card = new VBox();
+
+            card.setSpacing(10);
+
+            card.setPrefWidth(250);
+
+            card.setStyle(
+                    "-fx-background-color: #EFEFEF;" +
+                            "-fx-padding: 15;" +
+                            "-fx-background-radius: 10;"
+            );
+
+            Label nombre = new Label(evento.getNombre());
+
+            nombre.setStyle(
+                    "-fx-font-size: 20px;" +
+                            "-fx-font-weight: bold;"
+            );
+
+            Label ciudad = new Label(
+                    "Ciudad: " + evento.getCiudad()
+            );
+
+            Label categoria = new Label(
+                    "Categoría: " + evento.getCategoria()
+            );
+
+            Button boton = new Button("Ver Evento");
+
+            boton.setPrefWidth(150);
+
+            boton.setOnAction(e -> abrirCompraView());
+
+            card.getChildren().addAll(
+                    nombre,
+                    ciudad,
+                    categoria,
+                    boton
+            );
+
+            contenedorEventos.getChildren().add(card);
+        }
+    }
+
+    public void abrirCompraView() {
 
         try {
 
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/proyectoprogramacion2/CompraView.fxml")
+                    getClass().getResource(
+                            "/com/example/proyectoprogramacion2/CompraView.fxml"
+                    )
             );
 
             Parent root = loader.load();
@@ -25,6 +89,31 @@ public class DashboardClienteController {
             stage.setScene(scene);
 
             stage.setTitle("Compra de Entrada");
+
+            stage.show();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void cerrarSesion(ActionEvent event) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/com/example/proyectoprogramacion2/LoginView.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            Stage stage =
+                    (Stage) contenedorEventos.getScene().getWindow();
+
+            stage.setScene(new Scene(root));
 
             stage.show();
 

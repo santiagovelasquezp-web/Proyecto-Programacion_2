@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.FlowPane?>
 <AnchorPane prefHeight="650.0"
             prefWidth="900.0"
             xmlns="http://javafx.com/javafx/21"
@@ -20,61 +21,17 @@
                text="Eventos Disponibles"
                style="-fx-font-size: 30px; -fx-font-weight: bold;" />
 
-        <HBox layoutX="40.0"
-              layoutY="100.0"
-              spacing="40.0">
-
-            <!-- CARD 1 -->
-
-            <VBox spacing="10.0"
-                  prefWidth="300.0"
-                  style="-fx-background-color: #EFEFEF;
-                         -fx-padding: 15;
-                         -fx-background-radius: 10;">
-
-                <ImageView fitHeight="150.0"
-                           fitWidth="260.0" />
-
-                <Label text="Concierto Rock"
-                       style="-fx-font-size: 20px;
-                              -fx-font-weight: bold;" />
-
-                <Label text="Ciudad: Bogotá" />
-
-                <Label text="Categoría: Rock" />
-
-                <Button text="Ver Evento"
-                        prefWidth="150.0"
-                        onAction="#abrirCompraView"/>
-
-            </VBox>
-
-            <!-- CARD 2 -->
-
-            <VBox spacing="10.0"
-                  prefWidth="300.0"
-                  style="-fx-background-color: #EFEFEF;
-                         -fx-padding: 15;
-                         -fx-background-radius: 10;">
-
-                <ImageView fitHeight="150.0"
-                           fitWidth="260.0" />
-
-                <Label text="Festival Pop"
-                       style="-fx-font-size: 20px;
-                              -fx-font-weight: bold;" />
-
-                <Label text="Ciudad: Medellín" />
-
-                <Label text="Categoría: Pop" />
-
-                <Button text="Ver Evento"
-                        prefWidth="150.0"
-                        onAction="#abrirCompraView"/>
-
-            </VBox>
-
-        </HBox>
+        <FlowPane fx:id="contenedorEventos"
+                  layoutX="40.0"
+                  layoutY="100.0"
+                  prefWidth="800.0"
+                  hgap="30.0"
+                  vgap="30.0"/>
+        <Button layoutX="740.0"
+                layoutY="20.0"
+                prefWidth="120.0"
+                text="Cerrar Sesión"
+                onAction="#cerrarSesion"/>
 
     </children>
 

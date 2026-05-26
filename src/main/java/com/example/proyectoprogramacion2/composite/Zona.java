@@ -1,8 +1,8 @@
-package com.example.proyectoprogramacion2.model;
+package com.example.proyectoprogramacion2.composite;
 
 import java.util.List;
 
-public class Zona {
+public class Zona implements ComponenteRecinto{
     private String idZona;
     private String nombre;
     private int capacidad;
@@ -16,6 +16,19 @@ public class Zona {
         this.capacidad = capacidad;
         this.precioBase = precioBase;
         this.asientos = asientos;
+    }
+    @Override
+    public int getDisponibilidad() {
+        int totalDisponibles = 0;
+        for (Asiento asiento : asientos) {
+            totalDisponibles += asiento.getDisponibilidad();
+        }
+        return totalDisponibles;
+    }
+
+    @Override
+    public String getDetalles() {
+        return "Zona: " + nombre + " (Quedan " + getDisponibilidad() + " asientos)";
     }
 
     public String getIdZona() {
@@ -42,7 +55,7 @@ public class Zona {
         this.capacidad = capacidad;
     }
 
-    public double getPrecioBase() {
+    public double getPrecio() {
         return precioBase;
     }
 

@@ -1,24 +1,29 @@
 package com.example.proyectoprogramacion2.model;
 
 import com.example.proyectoprogramacion2.enums.EstadoCompra;
+import com.example.proyectoprogramacion2.observador.Observador;
 import com.example.proyectoprogramacion2.strategy.MetodoPago;
 
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Observador {
     private String ID;
     private String nombre;
     private String correo;
     private String telefono;
+    private String rol;
+    private String contrasena;
 
     private List<Compra> compras;
     private List<MetodoPago> metodoPagos;
 
-    public Usuario(String ID, String nombre, String correo, String telefono){
+    public Usuario(String ID, String nombre, String correo, String telefono, String rol, String contrasena){
         this.ID=ID;
         this.nombre=nombre;
         this.correo=correo;
         this.telefono = telefono;
+        this.rol=rol;
+        this.contrasena = contrasena;
     }
 
     public String getID() {
@@ -67,6 +72,26 @@ public class Usuario {
 
     public void setMetodoPagos(List<MetodoPago> metodoPagos) {
         this.metodoPagos = metodoPagos;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    @Override
+    public void actualizar(String mensaje) {
+        System.out.println("NOTIFICACIÓN PARA " + nombre + ": " + mensaje);
     }
 
     @Override

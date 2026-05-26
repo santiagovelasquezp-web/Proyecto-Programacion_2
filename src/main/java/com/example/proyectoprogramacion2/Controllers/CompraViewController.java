@@ -1,4 +1,6 @@
 package com.example.proyectoprogramacion2.Controllers;
+import com.example.proyectoprogramacion2.composite.Asiento;
+import com.example.proyectoprogramacion2.composite.Zona;
 import com.example.proyectoprogramacion2.enums.EstadoAsiento;
 import com.example.proyectoprogramacion2.enums.EstadoEvento;
 import com.example.proyectoprogramacion2.model.*;
@@ -115,7 +117,7 @@ public class CompraViewController implements Initializable {
                 "U001",
                 "Cliente",
                 "cliente@gmail.com",
-                "123"
+                "123","cliente","1488"
         );
 
         Evento evento = new Evento(

@@ -1,9 +1,16 @@
 package com.example.proyectoprogramacion2.Controllers;
+import com.example.proyectoprogramacion2.adapter.ExportadorDatos;
+import com.example.proyectoprogramacion2.adapter.ReporteCSVAdapter;
+import com.example.proyectoprogramacion2.model.Compra;
 import com.example.proyectoprogramacion2.model.Evento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -11,9 +18,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import com.example.proyectoprogramacion2.builder.EventoBuilder;
+import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import javafx.stage.Stage;
 
 public class DashboardAdminController implements Initializable {
 
@@ -43,7 +52,7 @@ public class DashboardAdminController implements Initializable {
 
     private ObservableList<Evento> listaEventos =
             FXCollections.observableArrayList();
-
+    private SistemaConcierto sistema = SistemaConcierto.getInstancia();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -82,6 +91,10 @@ public class DashboardAdminController implements Initializable {
 
         listaEventos.add(evento2);
 
+        sistema.agregarEvento(evento1);
+
+        sistema.agregarEvento(evento2);
+
         tablaEventos.setItems(listaEventos);
     }
     public void crearEvento() {
@@ -104,6 +117,8 @@ public class DashboardAdminController implements Initializable {
 
         listaEventos.add(nuevoEvento);
 
+        sistema.agregarEvento(nuevoEvento);
+
         tablaEventos.setItems(listaEventos);
 
         txtNombreEvento.clear();
@@ -111,5 +126,38 @@ public class DashboardAdminController implements Initializable {
         txtCiudadEvento.clear();
 
         txtCategoriaEvento.clear();
+    }
+    @FXML
+    public void cerrarSesion(ActionEvent event) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/com/example/proyectoprogramacion2/LoginView.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) tablaEventos.getScene().getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+    public void GenerarReporte(ActionEvent event) {
+        List<Compra> todasLasCompras = SistemaConcierto.getInstancia().getCompras();
+
+        ExportadorDatos exportador = new ReporteCSVAdapter();
+        String contenidoCSV = exportador.exportar(todasLasCompras);
+
+        System.out.println("--- REPORTE GENERADO ---");
+        System.out.println(contenidoCSV);
     }
 }
