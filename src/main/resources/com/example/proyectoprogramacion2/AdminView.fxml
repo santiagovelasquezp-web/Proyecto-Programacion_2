@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoprogramacion2.Controllers.DashboardAdminController">
+
+    <children>
+
+        <Label layoutX="14.0" layoutY="11.0" prefHeight="83.0" prefWidth="208.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="Gestión" />
+
+        <TextField fx:id="txtNombreEvento" layoutX="260.0" layoutY="40.0" prefWidth="180.0" promptText="Nombre Evento" />
+
+        <TextField fx:id="txtCiudadEvento" layoutX="460.0" layoutY="40.0" prefWidth="150.0" promptText="Ciudad" />
+
+        <TextField fx:id="txtCategoriaEvento" layoutX="630.0" layoutY="40.0" prefWidth="150.0" promptText="Categoría" />
+
+        <Button layoutX="800.0" layoutY="40.0" onAction="#crearEvento" text="Crear" />
+
+        <Button layoutX="793.0" layoutY="82.0"  text="Eliminar" />
+
+        <Button layoutX="40.0" layoutY="300.0" prefWidth="200.0" text="Gestionar Zonas" />
+
+        <Button layoutX="40.0" layoutY="360.0" prefWidth="200.0" text="Ver Métricas" />
+
+        <Button layoutX="40.0" layoutY="420.0" prefWidth="200.0" text="Exportar CSV" />
+
+        <Button layoutX="40.0" layoutY="120.0" prefWidth="200.0" text="Gestionar Eventos" />
+
+        <Button layoutX="40.0" layoutY="180.0" prefWidth="200.0" text="Gestionar Usuarios" />
+
+        <Button layoutX="40.0" layoutY="240.0" prefWidth="200.0" text="Ver Compras" />
+        <TableView fx:id="tablaEventos" layoutX="260.0" layoutY="113.0" prefHeight="400.0" prefWidth="600.0">
+
+            <columns>
+
+                <TableColumn fx:id="colId" prefWidth="100.0" text="ID" />
+
+                <TableColumn fx:id="colNombre" prefWidth="180.0" text="Nombre" />
+
+                <TableColumn fx:id="colCiudad" prefWidth="150.0" text="Ciudad" />
+
+                <TableColumn fx:id="colCategoria" prefWidth="150.0" text="Categoría" />
+
+            </columns>
+
+        </TableView>
+    </children>
+
+</AnchorPane>
