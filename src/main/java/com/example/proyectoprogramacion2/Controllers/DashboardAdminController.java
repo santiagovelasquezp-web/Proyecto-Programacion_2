@@ -33,10 +33,7 @@ public class DashboardAdminController implements Initializable {
         try {
 
             AnchorPane vista = FXMLLoader.load(
-                    getClass().getResource(
-                            "/com/example/proyectoprogramacion2/" + archivo
-                    )
-            );
+                    getClass().getResource("/com/example/proyectoprogramacion2/" + archivo));
 
             contenedorContenido.getChildren().setAll(vista);
 

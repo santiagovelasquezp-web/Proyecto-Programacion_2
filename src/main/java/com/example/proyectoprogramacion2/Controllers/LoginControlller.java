@@ -42,14 +42,14 @@ public class LoginControlller {
                 return;
             }
 
-            // Si pasó la validación, cargamos la vista según el correo
+            // Si pasó la validación, carga la vista según el correo
             FXMLLoader loader;
             if (usuarioEncontrado.getRol().equalsIgnoreCase("ADMIN")) {
                 loader = new FXMLLoader(getClass().getResource("/com/example/proyectoprogramacion2/AdminView.fxml"));
             } else {
                 loader = new FXMLLoader(getClass().getResource("/com/example/proyectoprogramacion2/ClienteView.fxml"));
             }
-            if (usuarioEncontrado.getRol().equals("CLIENTE")) {
+            if (usuarioEncontrado.getRol().equalsIgnoreCase("CLIENTE")) {
                 SistemaConcierto.getInstancia().suscribir(usuarioEncontrado);
             }
 

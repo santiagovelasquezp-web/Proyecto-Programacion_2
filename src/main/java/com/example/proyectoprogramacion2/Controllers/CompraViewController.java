@@ -8,12 +8,18 @@ import com.example.proyectoprogramacion2.service.CompraService;
 import com.example.proyectoprogramacion2.strategy.MetodoPago;
 import com.example.proyectoprogramacion2.strategy.PagoEfectivo;
 import com.example.proyectoprogramacion2.decorator.*;
+import com.example.proyectoprogramacion2.strategy.PagoPSE;
+import com.example.proyectoprogramacion2.strategy.PagoTarjeta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -83,27 +89,42 @@ public class CompraViewController implements Initializable {
             precioZona = 200000;
         }
 
-        Zona zona = new Zona(
+        Zona zona = new Zona("Z1", comboZona.getValue(), 500, precioZona, new java.util.ArrayList<>());
 
-                "Z1",
-
-                comboZona.getValue(),
-
-                500,
-
-                precioZona,
-
-                new java.util.ArrayList<>()
+        Asiento asiento = new Asiento(comboAsiento.getValue(), "A", 1, EstadoAsiento.DISPONIBLE
         );
 
-        Asiento asiento = new Asiento(
-                comboAsiento.getValue(),
-                "A",
-                1,
-                EstadoAsiento.DISPONIBLE
-        );
+        MetodoPago metodoPago;
 
-        MetodoPago metodoPago = new PagoEfectivo();
+        String metodoSeleccionado =
+                comboMetodoPago.getValue();
+
+        if(metodoSeleccionado.equals("Efectivo")){
+
+            metodoPago = new PagoEfectivo();
+
+            abrirVentanaPago(
+                    "/com/example/proyectoprogramacion2/PagoEfectivoView.fxml"
+            );
+        }
+
+        else if(metodoSeleccionado.equals("Tarjeta")){
+
+            metodoPago = new PagoTarjeta();
+
+            abrirVentanaPago(
+                    "/com/example/proyectoprogramacion2/PagoTarjetaView.fxml"
+            );
+        }
+
+        else{
+
+            metodoPago = new PagoPSE();
+
+            abrirVentanaPago(
+                    "/com/example/proyectoprogramacion2/PagoPSEView.fxml"
+            );
+        }
 
         java.util.List<ServicioAdicional> servicios = new java.util.ArrayList<>();
 
@@ -178,5 +199,27 @@ public class CompraViewController implements Initializable {
         );
 
         alerta.showAndWait();
+    }
+    public void abrirVentanaPago(String rutaFXML) {
+
+        try {
+
+            FXMLLoader loader =
+                    new FXMLLoader(
+                            getClass().getResource(rutaFXML)
+                    );
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 }
