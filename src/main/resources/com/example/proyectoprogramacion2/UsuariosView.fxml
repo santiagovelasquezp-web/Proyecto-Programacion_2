@@ -8,39 +8,18 @@
 <children>
 
     <Label layoutX="30.0" layoutY="20.0" style="-fx-font-size: 28px;                       -fx-font-weight: bold;" text="Gestión de Usuarios" />
-    <TextField fx:id="txtNombre"
-               layoutX="30.0"
-               layoutY="60.0"
-               prefWidth="150.0"
-               promptText="Nombre"/>
+    <TextField fx:id="txtNombre" layoutX="30.0" layoutY="60.0" prefWidth="150.0" promptText="Nombre" />
 
-    <TextField fx:id="txtCorreo"
-               layoutX="200.0"
-               layoutY="60.0"
-               prefWidth="180.0"
-               promptText="Correo"/>
+    <TextField fx:id="txtCorreo" layoutX="200.0" layoutY="60.0" prefWidth="180.0" promptText="Correo" />
 
-    <TextField fx:id="txtPassword"
-               layoutX="400.0"
-               layoutY="60.0"
-               prefWidth="120.0"
-               promptText="Contraseña"/>
+    <TextField fx:id="txtPassword" layoutX="400.0" layoutY="60.0" prefWidth="120.0" promptText="Contraseña" />
 
-    <ComboBox fx:id="comboRol"
-              layoutX="540.0"
-              layoutY="60.0"
-              prefWidth="100.0"/>
+    <ComboBox fx:id="comboRol" layoutX="540.0" layoutY="60.0" prefWidth="100.0" />
 
-    <Button text="Crear"
-            layoutX="30.0"
-            layoutY="100.0"
-            onAction="#crearUsuario"/>
+    <Button layoutX="30.0" layoutY="100.0" onAction="#crearUsuario" text="Crear" />
 
-    <Button text="Eliminar"
-            layoutX="110.0"
-            layoutY="100.0"
-            onAction="#eliminarUsuario"/>
-    <TableView fx:id="tablaUsuarios" layoutX="30.0" layoutY="90.0" prefHeight="420.0" prefWidth="620.0">
+    <Button layoutX="110.0" layoutY="100.0" onAction="#eliminarUsuario" text="Eliminar" />
+    <TableView fx:id="tablaUsuarios" layoutX="30.0" layoutY="120" prefHeight="420.0" prefWidth="620.0">
 
         <columns>
 
@@ -48,9 +27,9 @@
 
             <TableColumn fx:id="colNombre" prefWidth="180.0" text="Nombre" />
 
-            <TableColumn fx:id="colCorreo" prefWidth="220.0" text="Correo" />
-
             <TableColumn fx:id="colTelefono" prefWidth="120.0" text="Telefono" />
+
+            <TableColumn fx:id="colCorreo" prefWidth="220.0" text="Correo" />
 
         </columns>
 
