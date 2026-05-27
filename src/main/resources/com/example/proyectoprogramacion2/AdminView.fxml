@@ -3,53 +3,64 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoprogramacion2.Controllers.DashboardAdminController">
+<AnchorPane prefHeight="600.0"
+            prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.proyectoprogramacion2.Controllers.DashboardAdminController">
 
     <children>
 
-        <Label layoutX="14.0" layoutY="11.0" prefHeight="83.0" prefWidth="208.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="Gestión" />
 
-        <TextField fx:id="txtNombreEvento" layoutX="260.0" layoutY="40.0" prefWidth="180.0" promptText="Nombre Evento" />
+        <VBox layoutX="0.0"
+              layoutY="0.0"
+              prefWidth="220.0"
+              prefHeight="600.0"
+              spacing="20.0"
+              style="-fx-background-color: #2C3E50; -fx-padding: 20;">
 
-        <TextField fx:id="txtCiudadEvento" layoutX="460.0" layoutY="40.0" prefWidth="150.0" promptText="Ciudad" />
+            <children>
 
-        <TextField fx:id="txtCategoriaEvento" layoutX="630.0" layoutY="40.0" prefWidth="150.0" promptText="Categoría" />
+                <Label text="ADMIN"
+                       style="-fx-text-fill: white;
+                              -fx-font-size: 28px;
+                              -fx-font-weight: bold;" />
 
-        <Button layoutX="800.0" layoutY="40.0" onAction="#crearEvento" text="Crear" />
+                <Button text="Gestionar Eventos"
+                        prefWidth="180.0"
+                        onAction="#abrirEventos"/>
 
-        <Button layoutX="793.0" layoutY="82.0"  text="Eliminar" />
+                <Button text="Gestionar Usuarios"
+                        prefWidth="180.0"
+                        onAction="#abrirUsuarios"/>
 
-        <Button layoutX="40.0" layoutY="300.0" prefWidth="200.0" text="Gestionar Zonas" />
+                <Button text="Ver Compras"
+                        prefWidth="180.0"
+                        onAction="#abrirCompras"/>
 
-        <Button layoutX="40.0" layoutY="360.0" prefWidth="200.0" text="Ver Métricas" />
+                <Button text="Ver Métricas"
+                        prefWidth="180.0"
+                        onAction="#abrirMetricas"/>
 
-        <Button layoutX="40.0" layoutY="420.0" prefWidth="200.0" text="Exportar CSV" />
+                <Button text="Exportar CSV"
+                        prefWidth="180.0"
+                        onAction="#GenerarReporte"/>
 
-        <Button layoutX="40.0" layoutY="120.0" prefWidth="200.0" text="Gestionar Eventos" />
+                <Button text="Cerrar Sesión"
+                        prefWidth="180.0"
+                        onAction="#cerrarSesion"/>
 
-        <Button layoutX="40.0" layoutY="180.0" prefWidth="200.0" text="Gestionar Usuarios" />
-        <Button layoutX="40.0"
-                layoutY="500.0"
-                prefWidth="200.0"
-                text="Cerrar Sesión"
-                onAction="#cerrarSesion"/>
+            </children>
 
-        <Button layoutX="40.0" layoutY="240.0" prefWidth="200.0" text="Ver Compras" />
-        <TableView fx:id="tablaEventos" layoutX="260.0" layoutY="113.0" prefHeight="400.0" prefWidth="600.0">
+        </VBox>
 
-            <columns>
 
-                <TableColumn fx:id="colId" prefWidth="100.0" text="ID" />
+        <AnchorPane fx:id="contenedorContenido"
+                    layoutX="220.0"
+                    layoutY="0.0"
+                    prefWidth="680.0"
+                    prefHeight="600.0"/>
 
-                <TableColumn fx:id="colNombre" prefWidth="180.0" text="Nombre" />
-
-                <TableColumn fx:id="colCiudad" prefWidth="150.0" text="Ciudad" />
-
-                <TableColumn fx:id="colCategoria" prefWidth="150.0" text="Categoría" />
-
-            </columns>
-
-        </TableView>
     </children>
 
 </AnchorPane>

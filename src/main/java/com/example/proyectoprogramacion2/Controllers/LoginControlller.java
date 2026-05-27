@@ -26,7 +26,7 @@ public class LoginControlller {
     public void iniciarSesion(ActionEvent event) {
         try {
             String correo = txtCorreo.getText();
-            String password = txtPassword.getText(); // Capturamos la clave
+            String password = txtPassword.getText(); // Captura la clave
 
             Usuario usuarioEncontrado = null;
             for (Usuario u : SistemaConcierto.getInstancia().getUsuarios()) {
@@ -44,7 +44,7 @@ public class LoginControlller {
 
             // Si pasó la validación, cargamos la vista según el correo
             FXMLLoader loader;
-            if (usuarioEncontrado.getCorreo().equalsIgnoreCase("admin@gmail.com")) {
+            if (usuarioEncontrado.getRol().equalsIgnoreCase("ADMIN")) {
                 loader = new FXMLLoader(getClass().getResource("/com/example/proyectoprogramacion2/AdminView.fxml"));
             } else {
                 loader = new FXMLLoader(getClass().getResource("/com/example/proyectoprogramacion2/ClienteView.fxml"));

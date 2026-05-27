@@ -30,22 +30,27 @@ public class Compra {
     }
 //clase compra que contiene todos los metodos necesarios para generar una compra en el sistema
     public String getIdCompra() {
+
         return idCompra;
     }
 
     public void setIdCompra(String idCompra) {
+
         this.idCompra = idCompra;
     }
 
     public Usuario getUsuario() {
+
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
+
         this.usuario = usuario;
     }
 
     public Evento getEvento() {
+
         return evento;
     }
 
