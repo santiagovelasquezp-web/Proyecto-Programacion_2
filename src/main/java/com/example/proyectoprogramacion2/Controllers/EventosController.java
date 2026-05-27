@@ -129,9 +129,7 @@ public class EventosController implements Initializable {
 
                 .build();
 
-        SistemaConcierto
-                .getInstancia()
-                .agregarEvento(nuevoEvento);
+        SistemaConcierto.getInstancia().agregarEvento(nuevoEvento);
 
         listaEventos.setAll(
                 SistemaConcierto.getInstancia().getEventos()

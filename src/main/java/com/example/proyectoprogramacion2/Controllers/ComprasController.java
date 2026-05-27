@@ -45,9 +45,7 @@ public class ComprasController implements Initializable {
 
                 new javafx.beans.property.SimpleStringProperty(
 
-                        cellData.getValue()
-                                .getUsuario()
-                                .getNombre()
+                        cellData.getValue().getUsuario().getNombre()
                 )
         );
 
@@ -55,9 +53,7 @@ public class ComprasController implements Initializable {
 
                 new javafx.beans.property.SimpleStringProperty(
 
-                        cellData.getValue()
-                                .getEvento()
-                                .getNombre()
+                        cellData.getValue().getEvento().getNombre()
                 )
         );
 
@@ -68,9 +64,7 @@ public class ComprasController implements Initializable {
         ObservableList<Compra> compras =
                 FXCollections.observableArrayList(
 
-                        SistemaConcierto
-                                .getInstancia()
-                                .getCompras()
+                        SistemaConcierto.getInstancia().getCompras()
                 );
 
         tablaCompras.setItems(compras);

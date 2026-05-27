@@ -66,11 +66,33 @@ public class CompraViewController implements Initializable {
 
     public void confirmarCompra(ActionEvent event) {
 
+        double precioZona = 0;
+
+        if(comboZona.getValue().equals("Zona General")){
+
+            precioZona = 50000;
+        }
+
+        else if(comboZona.getValue().equals("Zona Preferencial")){
+
+            precioZona = 100000;
+        }
+
+        else if(comboZona.getValue().equals("Zona VIP")){
+
+            precioZona = 200000;
+        }
+
         Zona zona = new Zona(
+
                 "Z1",
+
                 comboZona.getValue(),
+
                 500,
-                100000,
+
+                precioZona,
+
                 new java.util.ArrayList<>()
         );
 

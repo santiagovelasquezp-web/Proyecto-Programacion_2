@@ -24,34 +24,42 @@ public class Entrada {
     }
 //clase modelo del objeto de la entrada con los atributos de esta
     public Evento getEvento() {
+
         return evento;
     }
 
     public void setEvento(Evento evento) {
+
         this.evento = evento;
     }
 
     public ServicioAdicional getServicio() {
+
         return servicio;
     }
 
     public void setServicio(ServicioAdicional servicio) {
+
         this.servicio = servicio;
     }
 
     public String getIdEntrada() {
+
         return idEntrada;
     }
 
     public void setIdEntrada(String idEntrada) {
+
         this.idEntrada = idEntrada;
     }
 
     public Zona getZona() {
+
         return zona;
     }
 
     public void setZona(Zona zona) {
+
         this.zona = zona;
     }
 
