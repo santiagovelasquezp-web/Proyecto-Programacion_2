@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="600.0"
+            prefWidth="850.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.proyectoprogramacion2.Controllers.RegisterViewController"
+            style="-fx-background-color: #0F172A;">
+
+    <children>
+
+        <VBox alignment="CENTER"
+              layoutX="245"
+              layoutY="50"
+              prefWidth="360"
+              prefHeight="500"
+              spacing="18"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 20;
+                     -fx-padding: 35;">
+
+            <Label text="Crear Cuenta"
+                   style="-fx-font-size: 28px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #0F172A;" />
+
+            <TextField fx:id="txtNombre"
+                       promptText="Nombre completo"
+                       prefWidth="260"
+                       prefHeight="40"
+                       style="-fx-background-radius: 10;" />
+
+            <TextField fx:id="txtCorreo"
+                       promptText="Correo"
+                       prefWidth="260"
+                       prefHeight="40"
+                       style="-fx-background-radius: 10;" />
+
+            <TextField fx:id="txtTelefono"
+                       promptText="Teléfono"
+                       prefWidth="260"
+                       prefHeight="40"
+                       style="-fx-background-radius: 10;" />
+
+            <PasswordField fx:id="txtPassword"
+                           promptText="Contraseña"
+                           prefWidth="260"
+                           prefHeight="40"
+                           style="-fx-background-radius: 10;" />
+
+            <Button text="Registrarse"
+                    onAction="#registrarUsuario"
+                    prefWidth="260"
+                    prefHeight="45"
+                    style="-fx-background-color: #10B981;
+                           -fx-text-fill: white;
+                           -fx-font-size: 16px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 12;" />
+
+            <Button text="Volver al Login"
+                    onAction="#volverLogin"
+                    prefWidth="260"
+                    prefHeight="40"
+                    style="-fx-background-color: #334155;
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 12;" />
+
+        </VBox>
+
+    </children>
+
+</AnchorPane>

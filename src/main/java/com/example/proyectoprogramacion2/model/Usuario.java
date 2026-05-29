@@ -1,8 +1,6 @@
 package com.example.proyectoprogramacion2.model;
 
-import com.example.proyectoprogramacion2.enums.EstadoCompra;
-import com.example.proyectoprogramacion2.observador.Observador;
-import com.example.proyectoprogramacion2.strategy.MetodoPago;
+import com.example.proyectoprogramacion2.patterns.MetodoPago;
 
 import java.util.List;
 
@@ -13,19 +11,20 @@ public class Usuario implements Observador {
     private String telefono;
     private String rol;
     private String contrasena;
-
     private List<Compra> compras;
     private List<MetodoPago> metodoPagos;
+    private String notificacionPendiente;
 
-    public Usuario(String ID, String nombre, String correo, String telefono, String rol, String contrasena){
-        this.ID=ID;
-        this.nombre=nombre;
-        this.correo=correo;
+    public Usuario(String ID, String nombre, String correo, String telefono, String rol, String contrasena) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.correo = correo;
         this.telefono = telefono;
-        this.rol=rol;
+        this.rol = rol;
         this.contrasena = contrasena;
     }
-//clase del usuario que usa la aplicación
+
+    //clase del usuario que usa la aplicación
     public String getID() {
         return ID;
     }
@@ -89,9 +88,18 @@ public class Usuario implements Observador {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public String getNotificacionPendiente() {
+        return notificacionPendiente;
+    }
+
+    public void setNotificacionPendiente(String notificacionPendiente) {
+        this.notificacionPendiente = notificacionPendiente;
+    }
+
     @Override
     public void actualizar(String mensaje) {
-        System.out.println("NOTIFICACIÓN PARA " + nombre + ": " + mensaje);
+        notificacionPendiente = mensaje;
     }
 
     @Override

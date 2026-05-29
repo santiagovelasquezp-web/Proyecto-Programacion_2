@@ -1,9 +1,9 @@
 package com.example.proyectoprogramacion2.Controllers;
 
-import com.example.proyectoprogramacion2.builder.EventoBuilder;
+import com.example.proyectoprogramacion2.patterns.EventoBuilder;
 import com.example.proyectoprogramacion2.enums.EstadoEvento;
 import com.example.proyectoprogramacion2.model.Evento;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

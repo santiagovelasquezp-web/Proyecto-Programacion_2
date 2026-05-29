@@ -1,6 +1,6 @@
-package com.example.proyectoprogramacion2.decorator;
+package com.example.proyectoprogramacion2.patterns;
 
-public class ParqueaderoDecorator implements ServicioAdicional{
+public class ParqueaderoDecorator implements ServicioAdicional {
     @Override
     public double agregarCosto() {
 

@@ -1,8 +1,8 @@
-package com.example.proyectoprogramacion2.composite;
+package com.example.proyectoprogramacion2.patterns;
 
 import com.example.proyectoprogramacion2.enums.EstadoAsiento;
 
-public class Asiento implements ComponenteRecinto{
+public class Asiento implements ComponenteRecinto {
     private String idAsiento;
     private String fila;
     private int numero;

@@ -1,10 +1,8 @@
-package com.example.proyectoprogramacion2.adapter;
-
-import com.example.proyectoprogramacion2.model.Compra;
+package com.example.proyectoprogramacion2.model;
 
 import java.util.List;
 
-public class ReporteCSVAdapter implements ExportadorDatos{
+public class ReporteCSVAdapter implements ExportadorDatos {
     @Override
     public String exportar(Object datos) {
         List<Compra> compras = (List<Compra>) datos;

@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.composite;
+package com.example.proyectoprogramacion2.patterns;
 
 import java.util.List;
 

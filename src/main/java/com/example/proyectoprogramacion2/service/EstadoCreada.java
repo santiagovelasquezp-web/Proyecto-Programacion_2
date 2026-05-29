@@ -1,8 +1,8 @@
- package com.example.proyectoprogramacion2.state;
+ package com.example.proyectoprogramacion2.service;
 
  import com.example.proyectoprogramacion2.enums.EstadoCompra;
  import com.example.proyectoprogramacion2.model.Compra;
- import com.example.proyectoprogramacion2.state.EstadoCompraState;
+ import com.example.proyectoprogramacion2.model.EstadoCompraState;
 
  public class EstadoCreada implements EstadoCompraState {
         @Override

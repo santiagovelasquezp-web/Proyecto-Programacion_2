@@ -1,99 +1,182 @@
 package com.example.proyectoprogramacion2.Controllers;
-import com.example.proyectoprogramacion2.composite.Asiento;
-import com.example.proyectoprogramacion2.composite.Zona;
+import com.example.proyectoprogramacion2.patterns.Asiento;
+import com.example.proyectoprogramacion2.patterns.Zona;
 import com.example.proyectoprogramacion2.enums.EstadoAsiento;
-import com.example.proyectoprogramacion2.enums.EstadoEvento;
+import com.example.proyectoprogramacion2.enums.EstadoCompra;
 import com.example.proyectoprogramacion2.model.*;
-import com.example.proyectoprogramacion2.service.CompraService;
-import com.example.proyectoprogramacion2.strategy.MetodoPago;
-import com.example.proyectoprogramacion2.strategy.PagoEfectivo;
-import com.example.proyectoprogramacion2.decorator.*;
-import com.example.proyectoprogramacion2.strategy.PagoPSE;
-import com.example.proyectoprogramacion2.strategy.PagoTarjeta;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
+import com.example.proyectoprogramacion2.patterns.MetodoPago;
+import com.example.proyectoprogramacion2.patterns.PagoEfectivo;
+import com.example.proyectoprogramacion2.patterns.PagoPSE;
+import com.example.proyectoprogramacion2.patterns.PagoTarjeta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CompraViewController implements Initializable {
     @FXML
-    private ComboBox<String> comboZona;
-
-    @FXML
     private ComboBox<String> comboAsiento;
-
     @FXML
     private ComboBox<String> comboMetodoPago;
-
     @FXML
     private CheckBox checkVip;
-
     @FXML
     private CheckBox checkSeguro;
-
     @FXML
     private CheckBox checkBebida;
-
     @FXML
     private CheckBox checkParqueadero;
-
-    private CompraService compraService = new CompraService();
+    @FXML
+    private Label lblTotal;
+    @FXML
+    private Label lblAsiento;
+    @FXML
+    private Button  btnPreferencial;
+    @FXML
+    private Button  btnGeneral;
+    @FXML
+    private GridPane panelAsientos;
+    public static String zonaSeleccionada;
+    public static String asientoSeleccionado;
+    private double precioZona = 0;
+    public static double total= 0;
+    public static Compra compraActual;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboZona.getItems().addAll(
-                "Zona VIP",
-                "Zona General",
-                "Zona Preferencial"
-        );
-        comboAsiento.getItems().addAll(
-                "A1",
-                "A2",
-                "A3",
-                "B1",
-                "B2",
-                "B3"
-        );
-        comboMetodoPago.getItems().addAll(
-                "Efectivo",
-                "Tarjeta",
-                "PayPal"
-        );
+        comboMetodoPago.getItems().addAll("Efectivo", "Tarjeta", "Pse");
+
+        for(int fila = 0; fila < 3; fila++) {
+            for(int columna = 0; columna < 4; columna++) {
+                Button asiento = new Button();
+                asiento.setPrefSize(60, 60);
+                String nombreAsiento =
+                        "" + (char)('A' + fila) + (columna + 1);
+                asiento.setText(nombreAsiento);
+                asiento.setStyle("-fx-background-color: #2ECC71;" + "-fx-text-fill: white;" + "-fx-font-weight: bold;");
+
+                asiento.setOnAction(event -> {
+
+                    if(asiento.getStyle().contains("#E74C3C")){
+
+                        asiento.setStyle("-fx-background-color: #2ECC71;" + "-fx-text-fill: white;" + "-fx-font-weight: bold;");
+
+                        asientoSeleccionado = null;
+
+                        System.out.println("Asiento deseleccionado");
+                    }
+
+                    else{
+                        asientoSeleccionado = asiento.getText();
+
+                        asiento.setStyle("-fx-background-color: #E74C3C;" + "-fx-text-fill: white;" + "-fx-font-weight: bold;");
+
+                        System.out.println(
+                                "Asiento seleccionado: " +
+                                        asientoSeleccionado
+                        );
+                    }
+                });
+                panelAsientos.add(asiento, columna, fila);
+            }
+
+        }
+        checkVip.setOnAction(e -> actualizarTotal());
+
+        checkSeguro.setOnAction(e -> actualizarTotal());
+
+        checkBebida.setOnAction(e -> actualizarTotal());
+
+        checkParqueadero.setOnAction(e -> actualizarTotal());
     }
 
-    public void confirmarCompra(ActionEvent event) {
+    @FXML
+    public void seleccionarVIP() {
 
-        double precioZona = 0;
+        zonaSeleccionada = "Zona VIP";
 
-        if(comboZona.getValue().equals("Zona General")){
+        precioZona = 200000;
 
-            precioZona = 50000;
+        actualizarTotal();
+
+        panelAsientos.setVisible(true);
+
+    }
+
+    @FXML
+    public void seleccionarPreferencial() {
+
+        zonaSeleccionada = "Zona Preferencial";
+
+        precioZona = 100000;
+
+        actualizarTotal();
+
+        panelAsientos.setVisible(true);
+    }
+
+    @FXML
+    public void seleccionarGeneral() {
+
+        zonaSeleccionada = "Zona General";
+
+        precioZona = 50000;
+        actualizarTotal();
+
+        panelAsientos.setVisible(true);
+
+
+
+    }
+    @FXML
+    public void seleccionarAsiento(ActionEvent event) {
+
+        Button boton = (Button) event.getSource();
+
+        asientoSeleccionado = boton.getText();
+
+        lblAsiento.setText("Asiento: " + asientoSeleccionado);
+    }
+
+    @FXML
+    public void continuarCompra(ActionEvent event) {
+
+        if(zonaSeleccionada == null){
+
+            mostrarError("Debe seleccionar una zona");
+            return;
         }
 
-        else if(comboZona.getValue().equals("Zona Preferencial")){
+        if(asientoSeleccionado == null){
 
-            precioZona = 100000;
+            mostrarError("Debe seleccionar un asiento");
+            return;
         }
 
-        else if(comboZona.getValue().equals("Zona VIP")){
+        if(comboMetodoPago.getValue() == null){
 
-            precioZona = 200000;
+            mostrarError("Debe seleccionar un método de pago");
+            return;
         }
 
-        Zona zona = new Zona("Z1", comboZona.getValue(), 500, precioZona, new java.util.ArrayList<>());
+        Zona zona = new Zona("Z1", zonaSeleccionada, 500, precioZona, new ArrayList<>());
 
-        Asiento asiento = new Asiento(comboAsiento.getValue(), "A", 1, EstadoAsiento.DISPONIBLE
-        );
+        Asiento asiento = new Asiento(asientoSeleccionado, "A", 1, EstadoAsiento.DISPONIBLE);
 
+        Usuario usuario = SistemaConcierto.getInstancia().getUsuarioActual();
+
+        Evento evento = SistemaConcierto.getInstancia().getEventoActual();
         MetodoPago metodoPago;
 
         String metodoSeleccionado =
@@ -102,112 +185,46 @@ public class CompraViewController implements Initializable {
         if(metodoSeleccionado.equals("Efectivo")){
 
             metodoPago = new PagoEfectivo();
-
-            abrirVentanaPago(
-                    "/com/example/proyectoprogramacion2/PagoEfectivoView.fxml"
-            );
         }
 
         else if(metodoSeleccionado.equals("Tarjeta")){
 
             metodoPago = new PagoTarjeta();
-
-            abrirVentanaPago(
-                    "/com/example/proyectoprogramacion2/PagoTarjetaView.fxml"
-            );
         }
 
         else{
 
             metodoPago = new PagoPSE();
+        }
+
+        String idCompra = "C00" + (SistemaConcierto.getInstancia().getCompras().size() + 1);
+
+        compraActual = new Compra(idCompra, usuario, evento, LocalDateTime.now(), EstadoCompra.CONFIRMADA, total, metodoPago, new ArrayList<>(), new ArrayList<>());
+        compraActual.setZona(zonaSeleccionada);
+        if(metodoSeleccionado.equals("Efectivo")){
 
             abrirVentanaPago(
-                    "/com/example/proyectoprogramacion2/PagoPSEView.fxml"
-            );
+                    "/com/example/proyectoprogramacion2/PagoEfectivo.fxml");
         }
 
-        java.util.List<ServicioAdicional> servicios = new java.util.ArrayList<>();
+        else if(metodoSeleccionado.equals("Tarjeta")){
 
-        if (checkVip.isSelected()) {
-
-            servicios.add(
-                    new VIPDecorator()
-            );
+            abrirVentanaPago(
+                    "/com/example/proyectoprogramacion2/PagoTarjeta.fxml");
         }
 
-        if (checkSeguro.isSelected()) {
+        else{
 
-            servicios.add(
-                    new SeguroDecorator()
-            );
+            abrirVentanaPago(
+                    "/com/example/proyectoprogramacion2/PagoPse.fxml");
         }
-
-        if (checkBebida.isSelected()) {
-
-            servicios.add(
-                    new BebidaDecorator()
-            );
-        }
-
-        if (checkParqueadero.isSelected()) {
-
-            servicios.add(
-                    new ParqueaderoDecorator()
-            );
-        }
-
-        Usuario usuario = new Usuario(
-                "U001",
-                "Cliente",
-                "cliente@gmail.com",
-                "123","cliente","1488"
-        );
-
-        Evento evento = new Evento(
-                "E001",
-                "Concierto Rock",
-                "Rock",
-                "Evento de rock",
-                "Bogotá",
-                java.time.LocalDate.now(),
-                java.time.LocalTime.now(),
-                EstadoEvento.ACTIVO,
-                null,
-                new java.util.ArrayList<>(),
-                new java.util.ArrayList<>(),
-                new java.util.ArrayList<>()
-        );
-
-        Compra compra = compraService.realizarCompra(
-                usuario,
-                evento,
-                zona,
-                asiento,
-                metodoPago,
-                servicios
-        );
-
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-
-        alerta.setTitle("Compra Exitosa");
-
-        alerta.setHeaderText(null);
-
-        alerta.setContentText(
-                "Compra realizada correctamente.\n\n" +
-                        "Total: $" + compra.getTotal()
-        );
-
-        alerta.showAndWait();
     }
     public void abrirVentanaPago(String rutaFXML) {
 
         try {
-
             FXMLLoader loader =
                     new FXMLLoader(
-                            getClass().getResource(rutaFXML)
-                    );
+                            getClass().getResource(rutaFXML));
 
             Parent root = loader.load();
 
@@ -221,5 +238,35 @@ public class CompraViewController implements Initializable {
 
             e.printStackTrace();
         }
+    }
+    public void mostrarError(String mensaje){
+
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+
+        alerta.setTitle("Error");
+
+        alerta.setHeaderText(null);
+
+        alerta.setContentText(mensaje);
+
+        alerta.showAndWait();
+    }
+    public void actualizarTotal(){
+
+        total = precioZona;
+
+        if(checkVip.isSelected()){
+            total += 50000;
+        }
+        if(checkSeguro.isSelected()){
+            total += 20000;
+        }
+        if(checkBebida.isSelected()){
+            total += 15000;
+        }
+        if(checkParqueadero.isSelected()){
+            total += 30000;
+        }
+        lblTotal.setText("Total: $" + total);
     }
 }

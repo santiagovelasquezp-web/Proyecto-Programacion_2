@@ -1,9 +1,9 @@
 package com.example.proyectoprogramacion2.Controllers;
 
-import com.example.proyectoprogramacion2.adapter.ExportadorDatos;
-import com.example.proyectoprogramacion2.adapter.ReporteCSVAdapter;
+import com.example.proyectoprogramacion2.model.ExportadorDatos;
+import com.example.proyectoprogramacion2.model.ReporteCSVAdapter;
 import com.example.proyectoprogramacion2.model.Compra;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +32,7 @@ public class DashboardAdminController implements Initializable {
 
         try {
 
-            AnchorPane vista = FXMLLoader.load(
+            Parent vista = FXMLLoader.load(
                     getClass().getResource("/com/example/proyectoprogramacion2/" + archivo));
 
             contenedorContenido.getChildren().setAll(vista);
@@ -58,13 +58,13 @@ public class DashboardAdminController implements Initializable {
     @FXML
     public void abrirCompras() {
 
-        cargarVista("ComprasView.fxml");
+        cargarVista("ComprasRegistradasView.fxml");
     }
 
     @FXML
     public void abrirMetricas() {
 
-        cargarVista("MetricasView.fxml");
+        cargarVista("Metricas.fxml");
     }
 
     @FXML

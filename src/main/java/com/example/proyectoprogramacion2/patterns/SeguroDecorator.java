@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.decorator;
+package com.example.proyectoprogramacion2.patterns;
 
 public class SeguroDecorator implements ServicioAdicional {
     @Override

@@ -1,18 +1,14 @@
 package com.example.proyectoprogramacion2.Controllers;
 
-import com.example.proyectoprogramacion2.model.Evento;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
-
+import com.example.proyectoprogramacion2.model.Compra;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import javafx.scene.chart.PieChart;
+import javafx.scene.chart.*;
 
 import java.net.URL;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -20,54 +16,98 @@ import java.util.ResourceBundle;
 public class MetricasController implements Initializable {
 
     @FXML
-    private PieChart graficoCategorias;
+    private PieChart graficaZonas;
+
+    @FXML
+    private BarChart<String, Number> graficaIngresos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        SistemaConcierto sistema =
-                SistemaConcierto.getInstancia();
+        cargarGraficaZonas();
 
-        Map<String, Integer> conteoCategorias =
-                new HashMap<>();
+        cargarGraficaIngresos();
+    }
 
-        for (Evento evento : sistema.getEventos()) {
+    public void cargarGraficaZonas() {
 
-            String categoria =
-                    evento.getCategoria();
+        int vip = 0;
+        int preferencial = 0;
+        int general = 0;
 
-            conteoCategorias.put(
+        for(Compra compra :
+                SistemaConcierto.getInstancia().getCompras()) {
 
-                    categoria,
+            if(compra.getZona().contains("VIP")) {
+                vip++;
+            }
 
-                    conteoCategorias.getOrDefault(
-                            categoria,
-                            0
-                    ) + 1
-            );
+            else if(compra.getZona().contains("Preferencial")) {
+                preferencial++;
+            }
+
+            else {
+                general++;
+            }
         }
 
         ObservableList<PieChart.Data> datos =
-                FXCollections.observableArrayList();
+                FXCollections.observableArrayList(
 
-        for (String categoria :
-                conteoCategorias.keySet()) {
+                        new PieChart.Data("VIP", vip),
+                        new PieChart.Data("Preferencial", preferencial),
+                        new PieChart.Data("General", general)
+                );
 
-            datos.add(
+        graficaZonas.setData(datos);
 
-                    new PieChart.Data(
+        graficaZonas.setTitle("Compras por Zona");
+    }
 
-                            categoria,
+    public void cargarGraficaIngresos() {
 
-                            conteoCategorias.get(categoria)
+        XYChart.Series<String, Number> serie =
+                new XYChart.Series<>();
+
+        Map<String, Double> ingresosEventos =
+                new HashMap<>();
+
+        for(Compra compra :
+                SistemaConcierto.getInstancia().getCompras()) {
+
+            String nombreEvento =
+                    compra.getEvento().getNombre();
+
+            double total =
+                    compra.getTotal();
+
+            ingresosEventos.put(
+                    nombreEvento,
+
+                    ingresosEventos.getOrDefault(
+                            nombreEvento,
+                            0.0
+                    ) + total
+            );
+        }
+
+        for(String evento :
+                ingresosEventos.keySet()) {
+
+            serie.getData().add(
+
+                    new XYChart.Data<>(
+
+                            evento,
+                            ingresosEventos.get(evento)
                     )
             );
         }
 
-        graficoCategorias.setTitle(
-                "Eventos por Categoría"
-        );
+        graficaIngresos.getData().add(serie);
 
-        graficoCategorias.setData(datos);
+        graficaIngresos.setTitle(
+                "Ingresos por Evento"
+        );
     }
 }

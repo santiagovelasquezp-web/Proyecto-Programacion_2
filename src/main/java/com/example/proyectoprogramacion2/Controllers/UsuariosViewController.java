@@ -1,15 +1,13 @@
 package com.example.proyectoprogramacion2.Controllers;
 
+import com.example.proyectoprogramacion2.patterns.UsuarioBuilder;
 import com.example.proyectoprogramacion2.model.Usuario;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -40,98 +38,64 @@ public class UsuariosViewController implements Initializable {
 
     @FXML
     private TextField txtPassword;
-
     @FXML
-    private ComboBox<String> comboRol;
-
+    private TextField txtTelefono;
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-            colId.setCellValueFactory(
-                    new PropertyValueFactory<>("ID")
-            );
+            colId.setCellValueFactory(new PropertyValueFactory<>("ID"));
 
-            colNombre.setCellValueFactory(
-                    new PropertyValueFactory<>("nombre")
-            );
+            colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
-            colCorreo.setCellValueFactory(
-                    new PropertyValueFactory<>("correo")
-            );
+            colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
 
-            colTelefono.setCellValueFactory(
-                    new PropertyValueFactory<>("rol")
-            );
+            colTelefono.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-            ObservableList<Usuario> usuarios =
-                    FXCollections.observableArrayList(
-                            SistemaConcierto
-                                    .getInstancia()
-                                    .getUsuarios()
-                    );
+            ObservableList<Usuario> usuarios = FXCollections.observableArrayList(SistemaConcierto.getInstancia().getUsuarios());
 
             tablaUsuarios.setItems(usuarios);
 
-            comboRol.getItems().addAll(
-                    "ADMIN",
-                    "CLIENTE"
-            );
         }
     @FXML
     public void crearUsuario() {
+        String telefono = txtTelefono.getText();
 
-        Usuario nuevo = new Usuario(
+        if(!telefono.matches("\\d+")){
 
-                "U" + (
-                        SistemaConcierto
-                                .getInstancia()
-                                .getUsuarios()
-                                .size() + 1
-                ),
+            mostrarError("El teléfono solo debe contener números");
+            return;
+        }
 
-                txtNombre.getText(),
+        if(telefono.startsWith("-")){
 
-                txtCorreo.getText(),
+            mostrarError("El teléfono no puede ser negativo");
+            return;
+        }
 
-                "000000",
+        if(telefono.length() != 10){
 
-                comboRol.getValue(),
+            mostrarError("El teléfono debe tener 10 números");
+            return;
+        }
 
-                txtPassword.getText()
-        );
+        Usuario nuevo = new UsuarioBuilder().nombre(txtNombre.getText()).correo(txtCorreo.getText()).telefono(txtTelefono.getText()).contrasena(txtPassword.getText()).build();
 
-        SistemaConcierto
-                .getInstancia()
-                .agregarUsuario(nuevo);
+        SistemaConcierto.getInstancia().agregarUsuario(nuevo);
 
-        tablaUsuarios.getItems().setAll(
-                SistemaConcierto
-                        .getInstancia()
-                        .getUsuarios()
-        );
+        tablaUsuarios.getItems().setAll(SistemaConcierto.getInstancia().getUsuarios());
 
         limpiarCampos();
     }
     @FXML
     public void eliminarUsuario() {
 
-        Usuario seleccionado =
-                tablaUsuarios
-                        .getSelectionModel()
-                        .getSelectedItem();
+        Usuario seleccionado = tablaUsuarios.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
 
-            SistemaConcierto
-                    .getInstancia()
-                    .getUsuarios()
-                    .remove(seleccionado);
+            SistemaConcierto.getInstancia().getUsuarios().remove(seleccionado);
 
-            tablaUsuarios.getItems().setAll(
-                    SistemaConcierto
-                            .getInstancia()
-                            .getUsuarios()
-            );
+            tablaUsuarios.getItems().setAll(SistemaConcierto.getInstancia().getUsuarios());
         }
     }
     public void limpiarCampos() {
@@ -142,7 +106,19 @@ public class UsuariosViewController implements Initializable {
 
         txtPassword.clear();
 
-        comboRol.setValue(null);
+        txtTelefono.clear();
+    }
+    public void mostrarError(String mensaje){
+
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+
+        alerta.setTitle("Error");
+
+        alerta.setHeaderText(null);
+
+        alerta.setContentText(mensaje);
+
+        alerta.showAndWait();
     }
     }
 

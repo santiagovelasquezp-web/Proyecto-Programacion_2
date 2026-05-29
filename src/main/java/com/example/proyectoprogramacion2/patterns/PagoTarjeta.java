@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.strategy;
+package com.example.proyectoprogramacion2.patterns;
 
 public class PagoTarjeta implements MetodoPago {
     @Override

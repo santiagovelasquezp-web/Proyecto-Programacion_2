@@ -1,23 +1,17 @@
 package com.example.proyectoprogramacion2.Controllers;
-
 import com.example.proyectoprogramacion2.model.Compra;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
-
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComprasController implements Initializable {
+public class ComprasRegistradasController implements Initializable {
 
     @FXML
     private TableView<Compra> tablaCompras;
@@ -37,25 +31,32 @@ public class ComprasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        colIdCompra.setCellValueFactory(
-                new PropertyValueFactory<>("idCompra")
-        );
+        colIdCompra.setCellValueFactory(new PropertyValueFactory<>("idCompra"));
 
-        colUsuario.setCellValueFactory(cellData ->
+        colUsuario.setCellValueFactory(cellData -> {
 
-                new javafx.beans.property.SimpleStringProperty(
+            if(cellData.getValue() == null ||
+                    cellData.getValue().getUsuario() == null){
 
-                        cellData.getValue().getUsuario().getNombre()
-                )
-        );
+                return new javafx.beans.property.SimpleStringProperty();
+            }
 
-        colEvento.setCellValueFactory(cellData ->
+            return new javafx.beans.property.SimpleStringProperty(
+                    cellData.getValue().getUsuario().getNombre()
+            );
+        });
+        colEvento.setCellValueFactory(cellData -> {
 
-                new javafx.beans.property.SimpleStringProperty(
+            if(cellData.getValue() == null ||
+                    cellData.getValue().getEvento() == null){
 
-                        cellData.getValue().getEvento().getNombre()
-                )
-        );
+                return new javafx.beans.property.SimpleStringProperty();
+            }
+
+            return new javafx.beans.property.SimpleStringProperty(
+                    cellData.getValue().getEvento().getNombre()
+            );
+        });
 
         colTotal.setCellValueFactory(
                 new PropertyValueFactory<>("total")

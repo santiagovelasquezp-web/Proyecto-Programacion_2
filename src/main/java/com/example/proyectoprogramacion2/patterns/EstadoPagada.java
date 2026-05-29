@@ -1,7 +1,7 @@
-package com.example.proyectoprogramacion2.state;
+package com.example.proyectoprogramacion2.patterns;
 
 import com.example.proyectoprogramacion2.model.Compra;
-import com.example.proyectoprogramacion2.state.EstadoCompraState;
+import com.example.proyectoprogramacion2.model.EstadoCompraState;
 
 public class EstadoPagada implements EstadoCompraState {
     @Override

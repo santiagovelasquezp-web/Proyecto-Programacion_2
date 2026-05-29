@@ -1,6 +1,4 @@
-package com.example.proyectoprogramacion2.state;
-
-import com.example.proyectoprogramacion2.model.Compra;
+package com.example.proyectoprogramacion2.model;
 
 public interface EstadoCompraState {
     void procesar(Compra compra);

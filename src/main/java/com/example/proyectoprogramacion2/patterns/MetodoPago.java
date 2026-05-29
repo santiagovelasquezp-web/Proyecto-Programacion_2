@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.strategy;
+package com.example.proyectoprogramacion2.patterns;
 
 public interface MetodoPago {
     void procesarPago(double monto);

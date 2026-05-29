@@ -1,15 +1,14 @@
 package com.example.proyectoprogramacion2.service;
 
-import com.example.proyectoprogramacion2.composite.Asiento;
-import com.example.proyectoprogramacion2.composite.Zona;
-import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
+import com.example.proyectoprogramacion2.patterns.Asiento;
+import com.example.proyectoprogramacion2.patterns.Zona;
+import com.example.proyectoprogramacion2.patterns.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoAsiento;
 import com.example.proyectoprogramacion2.enums.EstadoCompra;
 import com.example.proyectoprogramacion2.model.*;
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
-import com.example.proyectoprogramacion2.state.EstadoCompraState;
-import com.example.proyectoprogramacion2.state.EstadoCreada;
-import com.example.proyectoprogramacion2.strategy.MetodoPago;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.EstadoCompraState;
+import com.example.proyectoprogramacion2.patterns.MetodoPago;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,28 +17,28 @@ import java.util.List;
 public class CompraService {
 //clase encargada de realizar las compras que se generan
     // metodo que realiza la compra
-    public Compra realizarCompra(Usuario usuario, Evento evento, Zona zona, Asiento asiento,
+    public static Compra realizarCompra(Usuario usuario, Evento evento, Zona zona, Asiento asiento,
                                  MetodoPago metodoPago, List<ServicioAdicional> servicios) {
 
-        // 1. Validación de disponibilidad
+        //  Validación de disponibilidad
         if (asiento.getEstado() == EstadoAsiento.OCUPADO) {
             System.out.println("El asiento no está disponible.");
             return null;
         }
 
-        // 2. Cálculo de Precios
+        //  Cálculo de Precios
         double precioEntrada = zona.getPrecio();
         double totalCompra = precioEntrada;
 
-        // 3. Aplicación de Decorator (S
+        //  Aplicación de Decorator (S
         for (ServicioAdicional servicio : servicios) {
             totalCompra += servicio.agregarCosto();
         }
 
-        // 4. Marca asiento como ocupado
+        // Marca asiento como ocupado
         asiento.setEstado(EstadoAsiento.OCUPADO);
 
-        // 5. Crear lista de entradas para esta compra
+        //  Crear lista de entradas para esta compra
         List<Entrada> entradas = new ArrayList<>();
         Entrada nuevaEntrada = new Entrada(
                 "ENT-" + System.currentTimeMillis(),

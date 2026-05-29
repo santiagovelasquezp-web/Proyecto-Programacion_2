@@ -1,8 +1,8 @@
-package com.example.proyectoprogramacion2.composite;
+package com.example.proyectoprogramacion2.patterns;
 
 import java.util.List;
 
-public class Zona implements ComponenteRecinto{
+public class Zona implements ComponenteRecinto {
     private String idZona;
     private String nombre;
     private int capacidad;

@@ -1,6 +1,6 @@
 package com.example.proyectoprogramacion2.Controllers;
 
-import com.example.proyectoprogramacion2.singleton.SistemaConcierto;
+import com.example.proyectoprogramacion2.model.SistemaConcierto;
 import com.example.proyectoprogramacion2.model.Evento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,31 +33,51 @@ public class DashboardClienteController {
             card.setPrefWidth(250);
 
             card.setStyle(
-                    "-fx-background-color: #EFEFEF;" +
-                            "-fx-padding: 15;" +
-                            "-fx-background-radius: 10;"
+                    "-fx-background-color: white;" +
+                            "-fx-padding: 18;" +
+                            "-fx-background-radius: 15;" +
+                            "-fx-border-radius: 15;" +
+                            "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 4);"
             );
 
             Label nombre = new Label(evento.getNombre());
 
             nombre.setStyle(
-                    "-fx-font-size: 20px;" +
-                            "-fx-font-weight: bold;"
+                    "-fx-font-size: 22px;" +
+                            "-fx-font-weight: bold;" +
+                            "-fx-text-fill: #1E293B;"
             );
 
             Label ciudad = new Label(
                     "Ciudad: " + evento.getCiudad()
             );
 
+            ciudad.setStyle(
+                    "-fx-font-size: 14px;" +
+                            "-fx-text-fill: #475569;"
+            );
+
             Label categoria = new Label(
                     "Categoría: " + evento.getCategoria()
+            );
+
+            categoria.setStyle(
+                    "-fx-font-size: 14px;" +
+                            "-fx-text-fill: #475569;"
             );
 
             Button boton = new Button("Ver Evento");
 
             boton.setPrefWidth(150);
 
-            boton.setOnAction(e -> abrirCompraView());
+            boton.setOnAction(e -> {
+
+                SistemaConcierto
+                        .getInstancia()
+                        .setEventoActual(evento);
+
+                abrirCompraView();
+            });
 
             card.getChildren().addAll(
                     nombre,
@@ -76,9 +96,7 @@ public class DashboardClienteController {
 
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
-                            "/com/example/proyectoprogramacion2/CompraView.fxml"
-                    )
-            );
+                            "/com/example/proyectoprogramacion2/CompraView.fxml"));
 
             Parent root = loader.load();
 

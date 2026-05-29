@@ -1,6 +1,6 @@
 package com.example.proyectoprogramacion2.model;
-import com.example.proyectoprogramacion2.composite.Recinto;
-import com.example.proyectoprogramacion2.decorator.ServicioAdicional;
+import com.example.proyectoprogramacion2.patterns.Recinto;
+import com.example.proyectoprogramacion2.patterns.ServicioAdicional;
 import com.example.proyectoprogramacion2.enums.EstadoEvento;
 import java.time.LocalDate;
 import java.time.LocalTime;

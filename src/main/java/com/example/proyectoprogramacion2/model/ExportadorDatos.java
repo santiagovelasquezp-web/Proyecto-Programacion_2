@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.adapter;
+package com.example.proyectoprogramacion2.model;
 
 public interface ExportadorDatos {
     String exportar(Object datos);

@@ -1,80 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.proyectoprogramacion2.Controllers.CompraViewController">
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #F4F6F9;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoprogramacion2.Controllers.CompraViewController">
 
     <children>
+        <Label layoutX="30.0" layoutY="20.0" style="-fx-font-size: 30px;                       -fx-font-weight: bold;                       -fx-text-fill: #1E293B;" text="Compra de Entradas" />
 
-        <Label layoutX="30.0"
-               layoutY="20.0"
-               text="Compra de Entrada"
-               style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+        <VBox layoutX="30.0" layoutY="80.0" prefHeight="520.0" prefWidth="550.0" spacing="20.0" style="-fx-background-color: white;                      -fx-background-radius: 15;                      -fx-padding: 20;                      -fx-border-color: #D6DCE5;                      -fx-border-radius: 15;">
 
-        <Label layoutX="40.0"
-               layoutY="100.0"
-               text="Seleccionar Zona:" />
+            <Label style="-fx-font-size: 18px;                           -fx-font-weight: bold;" text="ESCENARIO" />
 
-        <ComboBox fx:id="comboZona"
-                  layoutX="200.0"
-                  layoutY="95.0"
-                  prefWidth="200.0"/>
-        <Label layoutX="40.0"
-               layoutY="140.0"
-               text="Seleccionar Asiento:" />
+            <Pane prefHeight="50.0" style="-fx-background-color: #2C3E50;                          -fx-background-radius: 10;" />
 
-        <ComboBox fx:id="comboAsiento"
-                  layoutX="200.0"
-                  layoutY="135.0"
-                  prefWidth="200.0"/>
+            <Label style="-fx-font-size: 16px;                           -fx-font-weight: bold;" text="Selecciona una Zona" />
 
-        <Label layoutX="40.0"
-               layoutY="200.0"
-               text="Seleccionar Método de Pago:" />
+            <HBox spacing="15.0">
 
-        <ComboBox fx:id="comboMetodoPago"
-                  layoutX="260.0"
-                  layoutY="200.0"
-                  prefWidth="200.0"/>
+                <Button fx:id="btnVip" onAction="#seleccionarVIP" prefHeight="80.0" prefWidth="142.0" style="-fx-background-color: #E74C3C;                                -fx-text-fill: white;                                -fx-font-size: 16px;                                -fx-font-weight: bold;" text="Vip (200k)" />
 
-        <Label layoutX="40.0"
-               layoutY="250.0"
-               text="Servicios Adicionales:"
-               style="-fx-font-weight: bold;" />
+                <Button fx:id="btnPreferencial" onAction="#seleccionarPreferencial" prefHeight="80.0" prefWidth="188.0" style="-fx-background-color: #F39C12;                                -fx-text-fill: white;                                -fx-font-size: 16px;                                -fx-font-weight: bold;" text="Preferencial (100k" />
 
-        <CheckBox fx:id="checkVip"
-                  layoutX="60.0"
-                  layoutY="300.0"
-                  text="Experiencia VIP (+50000)" />
+                <Button fx:id="btnGeneral" onAction="#seleccionarGeneral" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #3498DB;                                -fx-text-fill: white;                                -fx-font-size: 16px;                                -fx-font-weight: bold;" text="General 50k" />
 
-        <CheckBox fx:id="checkSeguro"
-                  layoutX="60.0"
-                  layoutY="340.0"
-                  text="Seguro del evento (+20000)" />
+            </HBox>
 
-        <CheckBox fx:id="checkBebida"
-                  layoutX="60.0"
-                  layoutY="380.0"
-                  text="Combo bebida (+15000)" />
+            <Label style="-fx-font-size: 16px;                           -fx-font-weight: bold;" text="Selecciona un Asiento" />
 
-        <CheckBox fx:id="checkParqueadero"
-                  layoutX="60.0"
-                  layoutY="420.0"
-                  text="Parqueadero VIP (+30000)" />
+            <GridPane fx:id="panelAsientos" hgap="10" vgap="10">
 
-        <Button layoutX="280.0"
-                layoutY="500.0"
-                prefWidth="200.0"
-                text="Confirmar Compra"
-                onAction="#confirmarCompra"/>
+            </GridPane>
 
+        </VBox>
+
+        <VBox layoutX="620.0" layoutY="80.0" prefHeight="520.0" prefWidth="320.0" spacing="20.0" style="-fx-background-color: white;                      -fx-background-radius: 15;                      -fx-padding: 20;                      -fx-border-color: #D6DCE5;                      -fx-border-radius: 15;">
+
+            <Label style="-fx-font-size: 22px;                           -fx-font-weight: bold;" text="Resumen de Compra" />
+
+            <Label style="-fx-font-size: 16px;                           -fx-font-weight: bold;" text="Método de Pago" />
+
+            <ComboBox fx:id="comboMetodoPago" prefWidth="250.0" />
+
+            <Label style="-fx-font-size: 16px;                           -fx-font-weight: bold;" text="Servicios Adicionales" />
+            <CheckBox fx:id="checkVip" text="Experiencia VIP (+50000)" />
+            <CheckBox fx:id="checkSeguro" text="Seguro del evento (+20000)" />
+            <CheckBox fx:id="checkBebida" text="Combo bebida (+15000)" />
+            <CheckBox fx:id="checkParqueadero" text="Parqueadero VIP (+30000)" />
+            <Separator />
+            <Label fx:id="lblTotal" style="-fx-font-size: 22px;                           -fx-font-weight: bold;                           -fx-text-fill: #27AE60;" text="Total: $0" />
+            <Button onAction="#continuarCompra" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #27AE60;                            -fx-text-fill: white;                            -fx-font-size: 16px;                            -fx-font-weight: bold;" text="continuar Compra" />
+        </VBox>
     </children>
-
 </AnchorPane>

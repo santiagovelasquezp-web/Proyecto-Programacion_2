@@ -1,4 +1,4 @@
-package com.example.proyectoprogramacion2.observador;
+package com.example.proyectoprogramacion2.model;
 
 public interface Observador {
     void actualizar(String mensaje);

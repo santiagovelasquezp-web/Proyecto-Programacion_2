@@ -6,7 +6,8 @@
 <AnchorPane prefHeight="450.0"
             prefWidth="550.0"
             xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.proyectoprogramacion2.Controllers.PagoPSEController">
 
     <children>
 
@@ -20,7 +21,8 @@
                layoutY="120.0"
                text="Banco:" />
 
-        <ComboBox layoutX="200.0"
+        <ComboBox fx:id="comboBanco"
+                  layoutX="200.0"
                   layoutY="115.0"
                   prefWidth="220.0"
                   promptText="Seleccione banco" />
@@ -29,7 +31,8 @@
                layoutY="190.0"
                text="Documento:" />
 
-        <TextField layoutX="200.0"
+        <TextField fx:id="txtDocumento"
+                   layoutX="200.0"
                    layoutY="185.0"
                    prefWidth="220.0"
                    promptText="Número documento" />
@@ -37,7 +40,8 @@
         <Button layoutX="200.0"
                 layoutY="300.0"
                 prefWidth="150.0"
-                text="Continuar Pago" />
+                text="Continuar Pago"
+                onAction="#confirmarPago"/>
 
     </children>
 
